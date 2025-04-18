@@ -60,6 +60,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Node Version Management
+
+This project uses [nvm](https://github.com/nvm-sh/nvm) for managing Node.js versions. To ensure you're using the correct version, run the following command:
+
+```bash
+nvm use
+```
+
+This will switch to the Node.js version specified in the `.nvmrc` file
+
 ## API Usage
 
 - **Cat Fact API**: Used to fetch random cat facts for the Expense Detail dialog.
