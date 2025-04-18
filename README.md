@@ -68,6 +68,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 - **IndexedDB Support**: Enable IndexedDB storage by setting a feature flag in `.env`.
 
+## Testing
+
+To run the tests, use the following command:
+
+```bash
+npm test
+```
+
+This will execute all unit tests using Jest.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
