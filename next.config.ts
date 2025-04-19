@@ -5,8 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['localhost'],
   },
-  experimental: {
-  },
+  experimental: {},
 };
 
 export default nextConfig;

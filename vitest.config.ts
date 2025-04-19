@@ -42,7 +42,7 @@ export default defineConfig({
           globals: true,
           setupFiles: './src/setupTests.ts',
         },
-      }
+      },
     ],
   },
 });
