@@ -41,6 +41,10 @@ Cat Expense Web is a front-end application designed to manage cat-related expens
 - **Animations**: Animations are added for modal transitions and other UI interactions.
 - **HTTP Client**: Uses Axios for making API requests.
 
+## Continuous Integration
+
+This project uses GitHub Actions for CI workflows, including linting, formatting, testing, deploying Storybook, deploying the app, and building the project.
+
 ## Folder Structure
 
 - **types/**: Contains TypeScript type definitions.
