@@ -37,7 +37,9 @@ Cat Expense Web is a front-end application designed to manage cat-related expens
 - **State Management**: Data is stored in LocalStorage with a fallback to IndexedDB (hidden behind a feature flag in `.env`).
 - **Testing**: Includes Jest for unit testing and Storybook for component documentation.
 - **Linting**: Configured with ESLint.
+- **Formatting**: Code and files are formatted using Prettier.
 - **Animations**: Animations are added for modal transitions and other UI interactions.
+- **HTTP Client**: Uses Axios for making API requests.
 
 ## Folder Structure
 
