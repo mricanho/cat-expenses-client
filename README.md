@@ -52,6 +52,10 @@ This project uses GitHub Actions for CI workflows, including linting, formatting
 - **services/**: Includes API calls and service logic.
 - **lib/**: Utility functions and helpers.
 
+## Component Design
+
+This project follows the Atomic Design methodology, organizing components into **atoms**, **molecules**, and **organisms**. This structure ensures reusability and scalability in the component hierarchy.
+
 ## Getting Started
 
 First, run the development server:
