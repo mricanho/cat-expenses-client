@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// Updated to use ESM build of Vite's Node API
 import { defineConfig } from 'vitest/config';
 
 import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
@@ -44,5 +45,14 @@ export default defineConfig({
         },
       },
     ],
+    browser: {
+      instances: [
+        {
+          name: 'chromium',
+          headless: true,
+          browser: 'chromium',
+        },
+      ],
+    },
   },
 });
