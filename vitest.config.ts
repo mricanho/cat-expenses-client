@@ -13,6 +13,8 @@ const dirname =
 // More info at: https://storybook.js.org/docs/writing-tests/test-addon
 export default defineConfig({
   test: {
+    globals: true,
+    setupFiles: './src/setupTests.ts',
     workspace: [
       {
         extends: true,
@@ -32,6 +34,15 @@ export default defineConfig({
           setupFiles: ['.storybook/vitest.setup.ts'],
         },
       },
+      {
+        extends: true,
+        test: {
+          environment: 'jsdom',
+          name: 'vitest',
+          globals: true,
+          setupFiles: './src/setupTests.ts',
+        },
+      }
     ],
   },
 });
