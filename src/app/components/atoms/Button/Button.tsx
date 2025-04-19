@@ -1,5 +1,4 @@
 import React from 'react';
-import './Button.css';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonColor = 'default' | 'primary' | 'secondary' | 'danger';
@@ -22,9 +21,27 @@ const Button: React.FC<ButtonProps> = ({
   children,
   disabled,
 }: ButtonProps) => {
+  const baseStyles = 'button';
+  const sizeStyles = {
+    small: 'button-small',
+    medium: 'button-medium',
+    large: 'button-large',
+  };
+  const colorStyles = {
+    default: 'button-default',
+    primary: 'button-primary',
+    secondary: 'button-secondary',
+    danger: 'button-danger',
+  };
+  const borderStyles = {
+    none: 'button-border-none',
+    solid: 'button-border-solid',
+    dashed: 'button-border-dashed',
+    dotted: 'button-border-dotted',
+  };
   return (
     <button
-      className={`button ${size} ${color} ${border} ${disabled ? 'disabled' : ''}`}
+      className={`${baseStyles} ${sizeStyles[size]} ${colorStyles[color]} ${borderStyles[border]}`}
       onClick={onClick}
       disabled={disabled}
     >
