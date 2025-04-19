@@ -1,4 +1,46 @@
+# Cat Expense Web
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Project Overview
+
+Cat Expense Web is a front-end application designed to manage cat-related expenses. The application includes the following features:
+
+### Main UI
+- Displays a list of expenses.
+- Includes an "Add Expense" button to open the Expense Detail dialog.
+- Highlights the rows with the highest spending category (Top CATegory).
+
+### Add Expense
+- Opens a modal dialog to input Item name, Category, and Amount (all mandatory).
+- Displays a random cat fact from the [Cat Fact API](https://catfact.ninja/) every time the dialog is opened.
+- Submits the expense and updates the Main UI.
+
+### Delete Expenses
+- Allows users to select one or more items using checkboxes.
+- Deletes selected items when the "Delete Expense" button is clicked.
+
+### Top CATegory
+- Highlights rows with the highest spending category.
+- If two categories have the same spending, both are highlighted.
+
+## Development Notes
+
+- **Commit**: Commit changes at every step after the initial setup.
+- **Framework**: Built with React and Next.js.
+- **Styling**: Uses Tailwind CSS for styling.
+- **TypeScript**: Fully typed with TypeScript.
+- **State Management**: Data is stored in LocalStorage with a fallback to IndexedDB (hidden behind a feature flag in `.env`).
+- **Testing**: Includes Jest for unit testing and Storybook for component documentation.
+- **Linting**: Configured with ESLint.
+- **Animations**: Animations are added for modal transitions and other UI interactions.
+
+## Folder Structure
+
+- **types/**: Contains TypeScript type definitions.
+- **constants/**: Stores application constants.
+- **services/**: Includes API calls and service logic.
+- **lib/**: Utility functions and helpers.
 
 ## Getting Started
 
@@ -18,7 +60,33 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Node Version Management
+
+This project uses [nvm](https://github.com/nvm-sh/nvm) for managing Node.js versions. To ensure you're using the correct version, run the following command:
+
+```bash
+nvm use
+```
+
+This will switch to the Node.js version specified in the `.nvmrc` file
+
+## API Usage
+
+- **Cat Fact API**: Used to fetch random cat facts for the Expense Detail dialog.
+
+## Feature Flags
+
+- **IndexedDB Support**: Enable IndexedDB storage by setting a feature flag in `.env`.
+
+## Testing
+
+To run the tests, use the following command:
+
+```bash
+npm test
+```
+
+This will execute all unit tests using Jest.
 
 ## Learn More
 
