@@ -7,20 +7,24 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 Cat Expense Web is a front-end application designed to manage cat-related expenses. The application includes the following features:
 
 ### Main UI
+
 - Displays a list of expenses.
 - Includes an "Add Expense" button to open the Expense Detail dialog.
 - Highlights the rows with the highest spending category (Top CATegory).
 
 ### Add Expense
+
 - Opens a modal dialog to input Item name, Category, and Amount (all mandatory).
 - Displays a random cat fact from the [Cat Fact API](https://catfact.ninja/) every time the dialog is opened.
 - Submits the expense and updates the Main UI.
 
 ### Delete Expenses
+
 - Allows users to select one or more items using checkboxes.
 - Deletes selected items when the "Delete Expense" button is clicked.
 
 ### Top CATegory
+
 - Highlights rows with the highest spending category.
 - If two categories have the same spending, both are highlighted.
 

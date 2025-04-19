@@ -1,6 +1,7 @@
 # Pull Request Template
 
 ## Description
+
 Please include a summary of the changes and the related issue. List any dependencies that are required for this change.
 
 Fixes # (issue)
@@ -13,6 +14,7 @@ Fixes # (issue)
 - [ ] Documentation update
 
 ## How Has This Been Tested?
+
 Please describe the tests that you ran to verify your changes. Provide instructions so others can reproduce. Include details of your testing environment, and the test cases you ran.
 
 - [ ] Test A
