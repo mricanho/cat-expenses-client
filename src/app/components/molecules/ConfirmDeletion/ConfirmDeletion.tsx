@@ -29,14 +29,16 @@ const ConfirmDeletion: React.FC<ConfirmDeletionProps> = ({
             onClick={onClose}
             size="small"
             color="secondary"
-            border="solid">
+            border="solid"
+          >
             Cancel
           </Button>
           <Button
             onClick={onConfirm}
             size="small"
             color="danger"
-            border="solid">
+            border="solid"
+          >
             Confirm
           </Button>
         </Box>

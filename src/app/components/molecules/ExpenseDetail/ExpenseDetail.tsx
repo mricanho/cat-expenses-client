@@ -77,12 +77,7 @@ const ExpenseDetail: React.FC<ExpenseDetailProps> = ({ onSubmit, onClose }) => {
         </Box>
       </Box>
       <Box className="mt-4 flex justify-end space-x-2">
-        <Button
-          onClick={onClose}
-          size="small"
-          color="secondary"
-          border="solid"
-        >
+        <Button onClick={onClose} size="small" color="secondary" border="solid">
           Cancel
         </Button>
         <Button

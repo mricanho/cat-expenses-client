@@ -9,7 +9,13 @@ type ModalProps = {
   backgroundColor?: string;
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, overlayColor, backgroundColor }) => {
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+  overlayColor,
+  backgroundColor,
+}) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
