@@ -21,6 +21,7 @@ const MainUI: React.FC = () => {
   const [isConfirming, setIsConfirming] = useState(false);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [alertMessage, setAlertMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleAddExpense = (expense: {
     name: string;
@@ -38,6 +39,7 @@ const MainUI: React.FC = () => {
     );
     setExpenses(updatedExpenses);
     saveToLocalStorage('expenses', updatedExpenses);
+    setSuccessMessage(`Deleted ${ids.length} expense(s).`);
   };
 
   function onDeleteExpensesButtonClick() {
@@ -50,8 +52,8 @@ const MainUI: React.FC = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold">Cat Expense Tracker</h1>
-      <div className="mt-4 flex justify-end space-x-2">
+      <h1 className="mx-4 text-2xl font-bold">Cat Expense Tracker</h1>
+      <div className="mt-4 mx-4 flex justify-end space-x-2">
         <Button
           onClick={() => setIsAdding(true)}
           size="medium"
@@ -70,8 +72,25 @@ const MainUI: React.FC = () => {
         </Button>
       </div>
       {alertMessage && (
-        <Box className="mb-4" as="div">
-          <InlineAlert type="error" message={alertMessage} setting="large" />
+        <Box className="m-4" as="div">
+          <InlineAlert
+            type="error"
+            message={alertMessage}
+            setting="large"
+            timeout={3000}
+            onClose={() => setAlertMessage('')}
+          />
+        </Box>
+      )}
+      {successMessage && (
+        <Box className="m-4" as="div">
+          <InlineAlert
+            type="success"
+            message={successMessage}
+            setting="large"
+            timeout={3000}
+            onClose={() => setSuccessMessage('')}
+          />
         </Box>
       )}
       <Expenses

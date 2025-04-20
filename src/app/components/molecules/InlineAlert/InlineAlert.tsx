@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export const INLINE_ALERT_TYPES = [
   'success',
@@ -28,12 +28,16 @@ type InlineAlertProps = {
     | 'large-fixed'
     | 'small'
     | 'small-fixed';
+  timeout?: number;
+  onClose?: () => void;
 };
 
 const InlineAlert: React.FC<InlineAlertProps> = ({
   type,
   message,
   setting,
+  timeout,
+  onClose,
 }) => {
   const settingStyles: Record<string, string> = {
     default: 'p-4 text-base',
@@ -44,9 +48,42 @@ const InlineAlert: React.FC<InlineAlertProps> = ({
     'small-fixed': 'p-2 text-sm fixed',
   };
 
+  // transition when the alert is shown and hidden
+  const [show, setShow] = React.useState(true);
+  useEffect(() => {
+    if (timeout) {
+      const timer = setTimeout(() => {
+        setShow(false);
+        if (onClose) onClose();
+      }, timeout);
+      return () => clearTimeout(timer);
+    }
+  }, [timeout, onClose]);
+
+  // close the alert when the close button is clicked
+  const handleClose = () => {
+    setShow(false);
+    if (onClose) onClose();
+  };
+
+  // close the alert when the escape key is pressed
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setShow(false);
+      if (onClose) onClose();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
   return (
     <Box
-      className={`${INLINE_ALERT_STYLES[type]} ${setting ? settingStyles[setting] : ''}`}
+      className={`flex items-center justify-between ${INLINE_ALERT_STYLES[type]} ${settingStyles[setting || 'default']} ${show ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
       data-testid="inline-alert"
       as="div"
       role="alert"
@@ -54,6 +91,27 @@ const InlineAlert: React.FC<InlineAlertProps> = ({
       <Text variant="body-medium" data-testid="inline-alert-text">
         {message}
       </Text>
+      <button
+        className="relative ml-4 p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
+        onClick={handleClose}
+        data-testid="inline-alert-close-button"
+        aria-label="Close alert"
+      >
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
     </Box>
   );
 };
