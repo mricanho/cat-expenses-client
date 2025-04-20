@@ -38,12 +38,10 @@ const ExpenseDetail: React.FC<ExpenseDetailProps> = ({ onSubmit, onClose }) => {
   return (
     <Box className="p-4">
       <Box className="mb-4">
-        <Text variant="title-medium">
-          Expense Detail
-        </Text>
+        <Text variant="title-medium">Expense Detail</Text>
       </Box>
 
-      <Text variant="body-medium" color='secondary'>
+      <Text variant="body-medium" color="secondary">
         {catFact}
       </Text>
       <Box className="mt-4 space-y-4">

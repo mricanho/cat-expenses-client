@@ -22,12 +22,12 @@ type InlineAlertProps = {
   type: InlineAlertType;
   message: string;
   setting?:
-  | 'default'
-  | 'fixed'
-  | 'large'
-  | 'large-fixed'
-  | 'small'
-  | 'small-fixed';
+    | 'default'
+    | 'fixed'
+    | 'large'
+    | 'large-fixed'
+    | 'small'
+    | 'small-fixed';
 };
 
 const InlineAlert: React.FC<InlineAlertProps> = ({
