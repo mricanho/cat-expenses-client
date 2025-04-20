@@ -18,12 +18,14 @@ const ConfirmDeletion: React.FC<ConfirmDeletionProps> = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <Box className="p-4">
-        <Text variant="title" className="text-lg font-bold">
-          Confirm Deletion
-        </Text>
-        <Text variant="body" className="mt-2 text-sm text-gray-600">
-          Are you sure you want to delete the selected items?
-        </Text>
+        <Box className="mb-4">
+          <Text variant="title-small">Confirm Deletion</Text>
+        </Box>
+        <Box className="mb-4">
+          <Text variant="body-medium" color="danger">
+            Are you sure you want to delete the selected items?
+          </Text>
+        </Box>
         <Box className="mt-4 flex justify-end space-x-2">
           <Button
             onClick={onClose}
