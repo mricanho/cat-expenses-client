@@ -1,13 +1,20 @@
 import React from 'react';
 
-export type TextVariant = 'title' | 'display' | 'body';
+export type TextVariant =
+  | 'title-small'
+  | 'title-medium'
+  | 'title-large'
+  | 'display-small'
+  | 'display-medium'
+  | 'display-large'
+  | 'body-small'
+  | 'body-medium'
+  | 'body-large';
 export type TextColor = 'default' | 'primary' | 'secondary' | 'danger';
-export type TextSize = 'small' | 'medium' | 'large';
 
 type TextProps = {
   variant: TextVariant;
   color?: TextColor;
-  size?: TextSize;
   className?: string;
   children: React.ReactNode;
 };
@@ -15,7 +22,6 @@ type TextProps = {
 const Text: React.FC<TextProps> = ({
   variant,
   color = 'default',
-  size = 'medium',
   className = '',
   children,
   ...props
@@ -42,7 +48,7 @@ const Text: React.FC<TextProps> = ({
 
   return (
     <span
-      className={`${baseStyles} ${variantStyles[variant]} ${colorStyles[color]} ${sizeStyles[size]} ${className}`}
+      className={`${baseStyles} ${variantStyles[variant.split('-')[0] as 'title' | 'display' | 'body']} ${sizeStyles[variant.split('-')[1] as 'small' | 'medium' | 'large']} ${colorStyles[color]} ${className}`}
       {...props}
     >
       {children}

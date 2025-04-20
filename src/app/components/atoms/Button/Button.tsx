@@ -21,29 +21,32 @@ const Button: React.FC<ButtonProps> = ({
   children,
   disabled,
 }: ButtonProps) => {
-  const baseStyles = 'button';
+  const baseStyles = 'transition duration-200 ease-in-out font-sans rounded-lg';
   const sizeStyles = {
-    small: 'button-small',
-    medium: 'button-medium',
-    large: 'button-large',
+    small: 'text-sm py-1 px-2',
+    medium: 'text-base py-2 px-4',
+    large: 'text-lg py-3 px-6',
   };
   const colorStyles = {
-    default: 'button-default',
-    primary: 'button-primary',
-    secondary: 'button-secondary',
-    danger: 'button-danger',
+    default: 'bg-gray-200 text-gray-800 hover:bg-gray-300 hover:text-gray-900',
+    primary: 'bg-blue-600 text-white hover:bg-blue-700',
+    secondary: 'bg-green-600 text-white hover:bg-green-700',
+    danger: 'bg-red-600 text-white hover:bg-red-700',
   };
   const borderStyles = {
-    none: 'button-border-none',
-    solid: 'button-border-solid',
-    dashed: 'button-border-dashed',
-    dotted: 'button-border-dotted',
+    none: '',
+    solid: 'border border-solid border-gray-300 hover:border-gray-400',
+    dashed: 'border border-dashed border-gray-300 hover:border-gray-400',
+    dotted: 'border border-dotted border-gray-300 hover:border-gray-400',
   };
+
   return (
     <button
       className={`${baseStyles} ${sizeStyles[size]} ${colorStyles[color]} ${borderStyles[border]}`}
       onClick={onClick}
       disabled={disabled}
+      aria-label={`Button with ${color} color, ${size} size, and ${border} border`}
+      title={`Button with ${color} color, ${size} size, and ${border} border`}
     >
       {children}
     </button>
