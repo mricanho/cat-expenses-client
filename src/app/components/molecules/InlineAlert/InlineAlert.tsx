@@ -22,12 +22,12 @@ type InlineAlertProps = {
   type: InlineAlertType;
   message: string;
   setting?:
-    | 'default'
-    | 'fixed'
-    | 'large'
-    | 'large-fixed'
-    | 'small'
-    | 'small-fixed';
+  | 'default'
+  | 'fixed'
+  | 'large'
+  | 'large-fixed'
+  | 'small'
+  | 'small-fixed';
 };
 
 const InlineAlert: React.FC<InlineAlertProps> = ({
@@ -51,7 +51,7 @@ const InlineAlert: React.FC<InlineAlertProps> = ({
       as="div"
       role="alert"
     >
-      <Text variant="body" data-testid="inline-alert-text">
+      <Text variant="body-medium" data-testid="inline-alert-text">
         {message}
       </Text>
     </Box>
