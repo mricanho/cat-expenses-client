@@ -71,9 +71,15 @@ const Expenses: React.FC<ExpensesProps> = ({
                   />
                 </label>
               </td>
-              <td className="border border-gray-300 px-4 py-2">{expense.name}</td>
-              <td className="border border-gray-300 px-4 py-2">{expense.category}</td>
-              <td className="border border-gray-300 px-4 py-2">${expense.amount}</td>
+              <td className="border border-gray-300 px-4 py-2">
+                {expense.name}
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                {expense.category}
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ${expense.amount}
+              </td>
             </tr>
           ))}
         </tbody>

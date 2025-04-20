@@ -1,9 +1,19 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { beforeEach } from 'node:test';
 import React from 'react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import MainUI from './MainUI';
 
 describe('MainUI Component - Functionality and Integration', () => {
+  beforeEach(() => {
+    // Mocking the localStorage to avoid actual storage operations
+    window.localStorage.setItem('expenses', JSON.stringify([]));
+    window.localStorage.setItem('catFacts', JSON.stringify([]));
+  });
+  afterEach(() => {
+    // Clear the localStorage after each test
+    window.localStorage.clear();
+  });
   it('renders the main UI elements', () => {
     render(<MainUI />);
     expect(screen.getByText('Cat Expense Tracker')).toBeInTheDocument();

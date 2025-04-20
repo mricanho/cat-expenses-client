@@ -5,7 +5,7 @@ import Text from './Text';
 
 describe('Text Component - Styles', () => {
   it('applies the title variant styles', () => {
-    render(<Text variant='title-medium'>Title Text</Text>);
+    render(<Text variant="title-medium">Title Text</Text>);
     const textElement = screen.getByText('Title Text');
     expect(textElement).toHaveClass('font-sans text-2xl font-bold');
   });
@@ -63,32 +63,24 @@ describe('Text Component - Styles', () => {
   });
 
   it('applies the small size styles', () => {
-    render(
-      <Text variant="body-medium">
-        Small Size Text
-      </Text>
-    );
+    render(<Text variant="body-medium">Small Size Text</Text>);
     const textElement = screen.getByText('Small Size Text');
-    expect(textElement).toHaveClass('font-sans text-base text-base text-gray-800');
+    expect(textElement).toHaveClass(
+      'font-sans text-base text-base text-gray-800'
+    );
   });
 
   it('applies the medium size styles', () => {
-    render(
-      <Text variant="body-medium">
-        Medium Size Text
-      </Text>
-    );
+    render(<Text variant="body-medium">Medium Size Text</Text>);
     const textElement = screen.getByText('Medium Size Text');
     expect(textElement).toHaveClass('text-base');
   });
 
   it('applies the large size styles', () => {
-    render(
-      <Text variant="body-medium">
-        Large Size Text
-      </Text>
-    );
+    render(<Text variant="body-medium">Large Size Text</Text>);
     const textElement = screen.getByText('Large Size Text');
-    expect(textElement).toHaveClass('font-sans text-base text-base text-gray-800');
+    expect(textElement).toHaveClass(
+      'font-sans text-base text-base text-gray-800'
+    );
   });
 });

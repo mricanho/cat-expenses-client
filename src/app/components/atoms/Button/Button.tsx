@@ -11,6 +11,7 @@ export interface ButtonProps {
   border?: ButtonBorder;
   children: React.ReactNode;
   disabled?: boolean;
+  ariaLabel?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   border = 'none',
   children,
   disabled,
+  ariaLabel = 'Button',
 }: ButtonProps) => {
   const baseStyles = 'transition duration-200 ease-in-out font-sans rounded-lg';
   const sizeStyles = {
@@ -45,7 +47,7 @@ const Button: React.FC<ButtonProps> = ({
       className={`${baseStyles} ${sizeStyles[size]} ${colorStyles[color]} ${borderStyles[border]}`}
       onClick={onClick}
       disabled={disabled}
-      aria-label={`Button with ${color} color, ${size} size, and ${border} border`}
+      aria-label={ariaLabel}
       title={`Button with ${color} color, ${size} size, and ${border} border`}
     >
       {children}
