@@ -1,7 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { getFromLocalStorage, saveToLocalStorage } from '../../../../lib/localStorage';
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from '../../../../lib/localStorage';
+import Box from '../../atoms/Box/Box';
 import Button from '../../atoms/Button/Button';
 import ConfirmDeletion from '../../molecules/ConfirmDeletion/ConfirmDeletion';
 import ExpenseDetail from '../../molecules/ExpenseDetail/ExpenseDetail';
@@ -16,7 +20,6 @@ const MainUI: React.FC = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [isConfirming, setIsConfirming] = useState(false);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
 
   const handleAddExpense = (expense: {
@@ -39,7 +42,7 @@ const MainUI: React.FC = () => {
 
   function onDeleteExpensesButtonClick() {
     if (selectedIds.length === 0) {
-      alert('Please select at least one expense to delete.');
+      setAlertMessage('Please select at least one expense to delete.');
       return;
     }
     setIsConfirming(true);
@@ -49,18 +52,9 @@ const MainUI: React.FC = () => {
     <div className="p-4">
       <h1 className="text-2xl font-bold">Cat Expense Tracker</h1>
       <div className="mt-4 flex justify-end space-x-2">
-        {
-          true && (
-            <InlineAlert
-              type="error"
-              message={alertMessage}
-              setting="small"
-            />
-          )
-        }
         <Button
           onClick={() => setIsAdding(true)}
-          size="small"
+          size="medium"
           color="primary"
           border="solid"
         >
@@ -68,14 +62,18 @@ const MainUI: React.FC = () => {
         </Button>
         <Button
           onClick={() => onDeleteExpensesButtonClick()}
-          size="small"
+          size="medium"
           color="danger"
           border="solid"
-          disabled={selectedIds.length === 0}
         >
           Delete Expense
         </Button>
       </div>
+      {alertMessage && (
+        <Box className="mb-4" as="div">
+          <InlineAlert type="error" message={alertMessage} setting="large" />
+        </Box>
+      )}
       <Expenses
         expenses={expenses}
         selectIds={selectedIds}

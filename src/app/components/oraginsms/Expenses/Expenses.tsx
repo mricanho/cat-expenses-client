@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Box from '../../atoms/Box/Box';
 import Text from '../../atoms/Text/Text';
 
 type Expense = {
@@ -17,7 +16,11 @@ type ExpensesProps = {
   onSelect?: (ids: string[]) => void;
 };
 
-const Expenses: React.FC<ExpensesProps> = ({ expenses, selectIds = [], onSelect }) => {
+const Expenses: React.FC<ExpensesProps> = ({
+  expenses,
+  selectIds = [],
+  onSelect,
+}) => {
   const [selectedIds, setSelectedIds] = useState<string[]>(selectIds);
 
   const toggleSelection = (id: string) => {
@@ -36,43 +39,28 @@ const Expenses: React.FC<ExpensesProps> = ({ expenses, selectIds = [], onSelect 
   );
 
   return (
-    <Box className="p-4">
-      <Text variant="title" className="text-lg font-bold">
+    <div className="p-4">
+      <Text variant="title-medium" className="text-lg font-bold">
         Expenses
       </Text>
-      <Box
-        as="table"
-        className="mt-4 w-full border-collapse border border-gray-300"
-      >
-        <Box as="thead">
-          <Box as="tr">
-            <Box as="th" className="border border-gray-300 px-4 py-2">
-              Select
-            </Box>
-            <Box as="th" className="border border-gray-300 px-4 py-2">
-              Item Name
-            </Box>
-            <Box as="th" className="border border-gray-300 px-4 py-2">
-              Category
-            </Box>
-            <Box as="th" className="border border-gray-300 px-4 py-2">
-              Amount
-            </Box>
-          </Box>
-        </Box>
-        <Box as="tbody">
+      <table className="mt-4 w-full border-collapse border border-gray-300">
+        <thead>
+          <tr>
+            <th className="border border-gray-300 px-4 py-2">Select</th>
+            <th className="border border-gray-300 px-4 py-2">Item Name</th>
+            <th className="border border-gray-300 px-4 py-2">Category</th>
+            <th className="border border-gray-300 px-4 py-2">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
           {expenses.map((expense) => (
-            <Box
-              as="tr"
+            <tr
               key={expense.id}
               className={
                 expense.amount === highestSpending ? 'bg-green-100' : ''
               }
             >
-              <Box
-                as="td"
-                className="border border-gray-300 px-4 py-2 text-center"
-              >
+              <td className="border border-gray-300 px-4 py-2 text-center">
                 <label>
                   <input
                     type="checkbox"
@@ -82,21 +70,15 @@ const Expenses: React.FC<ExpensesProps> = ({ expenses, selectIds = [], onSelect 
                     className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                   />
                 </label>
-              </Box>
-              <Box as="td" className="border border-gray-300 px-4 py-2">
-                {expense.name}
-              </Box>
-              <Box as="td" className="border border-gray-300 px-4 py-2">
-                {expense.category}
-              </Box>
-              <Box as="td" className="border border-gray-300 px-4 py-2">
-                ${expense.amount}
-              </Box>
-            </Box>
+              </td>
+              <td className="border border-gray-300 px-4 py-2">{expense.name}</td>
+              <td className="border border-gray-300 px-4 py-2">{expense.category}</td>
+              <td className="border border-gray-300 px-4 py-2">${expense.amount}</td>
+            </tr>
           ))}
-        </Box>
-      </Box>
-    </Box>
+        </tbody>
+      </table>
+    </div>
   );
 };
 
