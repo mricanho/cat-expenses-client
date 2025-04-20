@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import Text, { TextColor, TextSize, TextVariant } from './Text';
+import Text, { TextColor, TextVariant } from './Text';
 
 export default {
   title: 'Atoms/Text',
@@ -29,30 +29,26 @@ export default {
 const Template: StoryFn<{
   variant: TextVariant;
   color?: TextColor;
-  size?: TextSize;
   children: string;
 }> = (args) => <Text {...args} />;
 
 export const Title = Template.bind({});
 Title.args = {
-  variant: 'title',
+  variant: 'title-medium',
   color: 'default',
-  size: 'medium',
   children: 'Title Text',
 };
 
 export const Display = Template.bind({});
 Display.args = {
-  variant: 'display',
+  variant: 'display-medium',
   color: 'primary',
-  size: 'large',
   children: 'Display Text',
 };
 
 export const Body = Template.bind({});
 Body.args = {
-  variant: 'body',
+  variant: 'body-medium',
   color: 'secondary',
-  size: 'small',
   children: 'Body Text',
 };
