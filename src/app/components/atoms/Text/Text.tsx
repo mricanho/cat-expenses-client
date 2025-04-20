@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from '../Box/Box';
 
 export type TextVariant =
   | 'title-small'
@@ -47,12 +48,12 @@ const Text: React.FC<TextProps> = ({
   };
 
   return (
-    <span
+    <Box
       className={`${baseStyles} ${variantStyles[variant.split('-')[0] as 'title' | 'display' | 'body']} ${sizeStyles[variant.split('-')[1] as 'small' | 'medium' | 'large']} ${colorStyles[color]} ${className}`}
       {...props}
     >
       {children}
-    </span>
+    </Box>
   );
 };
 

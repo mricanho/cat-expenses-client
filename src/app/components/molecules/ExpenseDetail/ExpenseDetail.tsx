@@ -6,6 +6,7 @@ import Box from '../../atoms/Box/Box';
 import Button from '../../atoms/Button/Button';
 import Text from '../../atoms/Text/Text';
 import CategoryDetail from '../CategoryDetail/CategoryDetail';
+import InlineAlert from '../InlineAlert/InlineAlert';
 
 type ExpenseDetailProps = {
   onSubmit: (expense: {
@@ -21,6 +22,7 @@ const ExpenseDetail: React.FC<ExpenseDetailProps> = ({ onSubmit, onClose }) => {
   const [category, setCategory] = useState('Food');
   const [amount, setAmount] = useState(0);
   const [catFact, setCatFact] = useState('');
+  const [alertMessage, setAlertMessage] = useState('');
 
   useEffect(() => {
     getCatFact().then(setCatFact);
@@ -28,7 +30,9 @@ const ExpenseDetail: React.FC<ExpenseDetailProps> = ({ onSubmit, onClose }) => {
 
   const handleSubmit = () => {
     if (!name || !category || amount <= 0) {
-      alert('All fields are mandatory and amount must be greater than 0.');
+      setAlertMessage(
+        'All fields are mandatory and amount must be greater than 0.'
+      );
       return;
     }
     onSubmit({ name, category, amount });
@@ -40,7 +44,9 @@ const ExpenseDetail: React.FC<ExpenseDetailProps> = ({ onSubmit, onClose }) => {
       <Box className="mb-4">
         <Text variant="title-medium">Expense Detail</Text>
       </Box>
-
+      <Text variant="body-small">
+        {catFact ? 'Did you know?' : 'Loading cat fact...'}
+      </Text>
       <Text variant="body-medium" color="secondary">
         {catFact}
       </Text>
@@ -57,7 +63,7 @@ const ExpenseDetail: React.FC<ExpenseDetailProps> = ({ onSubmit, onClose }) => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="p-2 mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </Box>
         <CategoryDetail category={category} onChange={setCategory} />
@@ -72,11 +78,23 @@ const ExpenseDetail: React.FC<ExpenseDetailProps> = ({ onSubmit, onClose }) => {
             id="amount"
             type="number"
             value={amount}
-            onChange={(e) => setAmount(Number(e.target.value))}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            onChange={(e) => setAmount(Math.max(0, Number(e.target.value)))}
+            onFocus={(e) => e.target.select()}
+            className="p-2 mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </Box>
       </Box>
+      {alertMessage && (
+        <Box className="mt-4" as="div">
+          <InlineAlert
+            type="error"
+            message={alertMessage}
+            setting="small"
+            timeout={3000}
+            onClose={() => setAlertMessage('')}
+          />
+        </Box>
+      )}
       <Box className="mt-4 flex justify-end space-x-2">
         <Button onClick={onClose} size="small" color="secondary" border="solid">
           Cancel

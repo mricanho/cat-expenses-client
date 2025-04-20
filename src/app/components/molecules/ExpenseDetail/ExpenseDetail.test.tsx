@@ -40,9 +40,10 @@ describe('ExpenseDetail Component - Functionality and Styles', () => {
 
     fireEvent.click(screen.getByText('Submit'));
 
-    expect(window.alert).toHaveBeenCalledWith(
+    const alertMessage = screen.getByText(
       'All fields are mandatory and amount must be greater than 0.'
     );
+    expect(alertMessage).toBeInTheDocument();
   });
 
   it('calls onClose when the Cancel button is clicked', () => {
