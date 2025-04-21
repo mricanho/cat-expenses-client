@@ -4,6 +4,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Project Overview
 
+![Screenshot 2025-04-20 at 6 13 10 p m](https://github.com/user-attachments/assets/5a873d8e-ced8-4747-a18b-f64ef52746c7)
+
+Live Demo:
+
+<a href="https://cat-expenses-client.vercel.app/">Visit Page</a>
+
 Cat Expense Web is a front-end application designed to manage cat-related expenses. The application includes the following features:
 
 ### Main UI
